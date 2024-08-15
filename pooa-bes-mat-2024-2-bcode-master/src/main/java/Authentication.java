@@ -5,11 +5,11 @@ public class Authentication {
     *
     * Classe responsável por realizar a autenticação do login
     * Obs: Houveram problemas na hora de implementar os recursos de autenticação na classe main
-    *  então essa classe ainda não está sendo utilizada dentro do fluxo do algoritmo
+    *  então essa classe ainda não está sendo utilizada da maneira correta dentro do fluxo do algoritmo
      */
 
 
-    private boolean loggedIn = false;
+    private boolean loggedIn = true;
 
     public boolean login(String username, String password) {
         if (username.equals("admin") && password.equals("admin")) {
