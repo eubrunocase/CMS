@@ -1,5 +1,12 @@
+import java.util.Scanner;
+
+
 public class main {
     public static void main(String[] args) {
-        System.out.println("Teste");
+
+        usuario teste = new usuario("Bruno", 810);
+
+        System.out.println(teste.autenticar(810));
+
     }
 }
