@@ -9,14 +9,15 @@ public class Authentication {
      */
 
 
-    private boolean loggedIn = true;
+    private boolean loggedIn = false;
 
     public boolean login(String username, String password) {
-        if (username.equals("admin") && password.equals("admin")) {
+        if (username.equals("bruno") && password.equals("0810")) {
             loggedIn = true;
             System.out.println("Login bem-sucedido!");
             return true;
         } else {
+            System.out.println("Usuário inválido");
             return false;
         }
     }
@@ -26,6 +27,13 @@ public class Authentication {
     }
 
     public boolean isLoggedIn() {
-        return loggedIn;
+        if (loggedIn == true) {
+            System.out.println("Está logado com sucesso! ");
+            return true;
+        } else {
+            System.out.println("Não está logado! ");
+            return false;
+        }
+
     }
 }
