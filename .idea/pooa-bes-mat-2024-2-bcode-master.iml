@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
   <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/pooa-bes-mat-2024-2-bcode-master/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pooa-bes-mat-2024-2-bcode-master/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pooa-bes-mat-2024-2-bcode-master/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/pooa-bes-mat-2024-2-bcode-master/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/pooa-bes-mat-2024-2-bcode-master/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/pooa-bes-mat-2024-2-bcode-master/src/test/resources" type="java-test-resource" />
+    </content>
   </component>
 </module>

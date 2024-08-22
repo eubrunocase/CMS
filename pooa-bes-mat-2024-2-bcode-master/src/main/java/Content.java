@@ -8,13 +8,13 @@ public class Content {
 *
  */
     private int id;
-    private String titulo;
-    private String tipo;
+    private String title;
+    private String body;
 
     public Content(int id, String title, String body) {
         this.id = id;
-        this.titulo = title;
-        this.tipo = body;
+        this.title = title;
+        this.body = body;
     }
 
     public int getId() {
@@ -22,23 +22,23 @@ public class Content {
     }
 
     public String getTitle() {
-        return titulo;
+        return title;
     }
 
     public void setTitle(String title) {
-        this.titulo = title;
+        this.title = title;
     }
 
     public String getBody() {
-        return tipo;
+        return body;
     }
 
     public void setBody(String body) {
-        this.tipo = body;
+        this.body = body;
     }
 
     @Override
     public String toString() {
-        return "ID: " + id + "\nTítulo: " + titulo + "\nCorpo: " + tipo + "\n";
+        return "ID: " + id + "\nTítulo: " + title + "\nCorpo: " + body + "\n";
     }
 }

@@ -4,10 +4,11 @@
 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany.app</groupId>
-    <artifactId>cms</artifactId>
+    <artifactId>pooa-bes-mat-2024-2-bcode-master</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
     </properties>
+
 </project>
