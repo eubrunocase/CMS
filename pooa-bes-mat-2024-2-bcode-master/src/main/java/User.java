@@ -34,4 +34,8 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String toString() {
+        return "Usuario [username=" + username + ", password=" + password + ", role=" + role + "]";
+    }
 }

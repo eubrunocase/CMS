@@ -14,7 +14,7 @@ public class main {
         Authentication auth = new Authentication();
         ContentService contentService = new ContentService();
         UserService userService = new UserService();
-        List<User> usuarios = new ArrayList<>();
+
 
 //        try {
 //        while (true) {
@@ -149,10 +149,9 @@ try {
                                                 String Username = scanner.nextLine();
                                                 System.out.print("Password: ");
                                                 String Password = scanner.nextLine();
-                                                String role = "user";
-                                                User user = new User(username, password, role);
-                                                usuarios.add(user);
-                                                System.out.println("Usuário criado com sucesso!");
+                                                System.out.println("Role: ");
+                                                String role = scanner.nextLine();
+                                                userService.create(Username, Password, role);
                                                  break;
                                             case 2:
                                                 System.out.print("Título do Conteúdo: ");

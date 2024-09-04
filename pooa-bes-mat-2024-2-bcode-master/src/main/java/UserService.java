@@ -22,7 +22,7 @@ public class UserService implements PersistenciaUsuario{
          System.out.println("Não existem usuarios cadastrados!");
      } else {
          for (User user : users )
-             System.out.println(user);
+             System.out.println(user.toString());
      }
     }
 
@@ -45,7 +45,7 @@ public class UserService implements PersistenciaUsuario{
           users.remove(user);
           System.out.println("User " + username + " removido com sucesso!");
       }
-        System.out.println("Usuário encontrado");
+        System.out.println("Usuário não encontrado");
     }
 
     private User findUser(String username) {
