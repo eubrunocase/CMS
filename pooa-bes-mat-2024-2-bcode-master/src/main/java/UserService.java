@@ -4,16 +4,18 @@ import java.util.List;
 public class UserService implements PersistenciaUsuario{
 
     private List<User> users;
+    private int NextId;
 
     public UserService() {
         users = new ArrayList<User>();
     }
 
     @Override
-    public void create(String username, String password, String role) {
-        User user = new User(username, password, role);
+    public User create(String username, String password, String role) {
+        User user = new User(NextId++, username, password, role);
         users.add(user);
         System.out.println("User " + username + " criado com sucesso! ");
+        return user;
     }
 
     @Override
@@ -27,35 +29,44 @@ public class UserService implements PersistenciaUsuario{
     }
 
     @Override
-    public void update(String username,String newUsername, String newPassword, String newRole) {
-       User user = findUser(username);
+    public void update(int id, String newUsername, String newPassword, String newRole) {
+       User user = findUser(id);
        if (user != null) {
            user.setUsername(newUsername);
            user.setPassword(newPassword);
            user.setRole(newRole);
-           System.out.println("User " + username + " atualizado com sucesso!");
-       }
+           System.out.println("User " + id + " atualizado com sucesso!");
+       } else
         System.out.println("Usuário não encontrado");
     }
 
     @Override
-    public void delete(String username) {
-      User user = findUser(username);
+    public void delete(int id) {
+      User user = findUser(id);
       if (user != null) {
           users.remove(user);
-          System.out.println("User " + username + " removido com sucesso!");
-      }
+          System.out.println("User " + id + " removido com sucesso!");
+      } else
         System.out.println("Usuário não encontrado");
     }
 
-    private User findUser(String username) {
+
+    private User findUser(int id) {
         for (User user : users) {
-            if (user.getUsername().equals(username)) {
+            if (user.getId() == id) {
                 return user;
             }
         }
         return null;
     }
 
+    public User validarLogin(int id,String username, String password, String role) {
+        User usuario = null;
+        if(username != null && !username.isEmpty()
+                && username.equals(password)){
+            usuario =  new User(id, username,password, role);
+        }
+        return usuario;
+    }
 
 }
