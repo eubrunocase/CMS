@@ -69,4 +69,13 @@ public class UserService implements PersistenciaUsuario{
         return usuario;
     }
 
+    public void alterarSenha (int id, String novaSenha) {
+        User user = findUser(id);
+        if (user != null) {
+            user.setPassword(novaSenha);
+        } else {
+            System.out.println("Usuário não encontrado! ");
+        }
+    }
+
 }

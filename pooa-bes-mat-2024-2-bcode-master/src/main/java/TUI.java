@@ -54,9 +54,10 @@ public class TUI {
                System.out.println("4. Listar usuários");
                System.out.println("5. Alterar usuário");
                System.out.println("6. Remover usuário");
-               System.out.println("7. Atualizar Conteúdo");
-               System.out.println("8. Excluir Conteúdo");
-               System.out.println("9. Logout");
+               System.out.println("7. Alterar senha");
+               System.out.println("8. Atualizar Conteúdo");
+               System.out.println("9. Excluir Conteúdo");
+               System.out.println("10. Logout");
                System.out.print("Escolha uma opção: ");
                int userChoice = scanner.nextInt();
 
@@ -104,6 +105,16 @@ public class TUI {
                        userService.delete(DeleteId);
                        break;
                    case 7:
+                       System.out.println("ID do usuario: ");
+                       scanner.nextLine();
+                       int deleteSenha = scanner.nextInt();
+                       System.out.println("Nova senha: ");
+                       scanner.nextLine();
+                       String NewPassword2 = scanner.nextLine();
+                       userService.alterarSenha(deleteSenha,NewPassword2);
+                       System.out.println("Senha alterada com sucesso! ");
+                       break;
+                   case 8:
                        System.out.print("ID do Conteúdo a Atualizar: ");
                        int updateId = scanner.nextInt();
                        scanner.nextLine();  // Consumir a nova linha
@@ -113,12 +124,12 @@ public class TUI {
                        String newBody = scanner.nextLine();
                        contentService.update(updateId, newTitle, newBody);
                        break;
-                   case 8:
+                   case 9:
                        System.out.print("ID do Conteúdo a Excluir: ");
                        int deleteId = scanner.nextInt();
                        contentService.delete(deleteId);
                        break;
-                   case 9:
+                   case 10:
                        auth.logout();
                        System.out.println("Desconectado com sucesso!");
                        break;
@@ -126,7 +137,7 @@ public class TUI {
                        System.out.println("Opção inválida. Tente novamente.");
                        break;
                }
-               if (userChoice == 9) {
+               if (userChoice == 10) {
                    currentUser = null;
            }
                return currentUser;
