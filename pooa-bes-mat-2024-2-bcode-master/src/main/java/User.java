@@ -41,6 +41,9 @@ public class User {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public String toString() {
         return "Usuario [id= " + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
     }

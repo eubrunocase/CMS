@@ -53,11 +53,11 @@ public class TUI {
                     System.out.println("User/ADM: ");
                     String role2 = scanner.nextLine();
                     User user1 = userService.validarLogin(Usuario, pass, role2);
-                    if (user != null) {
+                    if (user != null) {        // !!!
                         System.out.println("Login efetuado com sucesso! ");
                         return user;
                     } else {
-                        System.out.println("Login inválido! ");
+                        System.out.println("Login invalido! ");
                         return null;
                     }
                 case 2:
@@ -165,7 +165,7 @@ public class TUI {
                        break;
                }
                if (userChoice == 10) {
-                   currentUser = null;
+                   System.exit(0);
            }
                return currentUser;
 
