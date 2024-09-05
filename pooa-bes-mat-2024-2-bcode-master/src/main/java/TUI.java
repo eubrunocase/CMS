@@ -9,7 +9,18 @@ public class TUI {
 
 
     public User mostrarMenuLogin() {
+
         while (true) {
+            System.out.println("Bem ao CMS! ");
+            System.out.println("Digite seu nome: ");
+            String Nome = scanner.nextLine();
+            System.out.println("Digite sua senha: ");
+            String Senha = scanner.nextLine();
+            System.out.println("User/ADM: ");
+            String role = scanner.nextLine();
+            User user = userService.create(Nome, Senha, role);
+
+
             System.out.println("Menu inicial: ");
             System.out.println("1. Login ");
             System.out.println("2. Listar conteúdos ");
@@ -18,16 +29,32 @@ public class TUI {
             int escolha = scanner.nextInt();
 
             switch (escolha) {
+//                case 1:
+//                    System.out.println("Digite seu nome: ");
+//                    scanner.nextLine();
+//                    String nome = scanner.nextLine();
+//                    System.out.println("Digite sua senha: ");
+//                    String senha = scanner.next();
+//                    System.out.println("Digite o seu papel: ");
+//                    String papel = scanner.next();
+//                    User user = userService.create(nome, senha, papel);
+//                    if (user != null) {
+//                        return user;
+//                    } else {
+//                        System.out.println("Login inválido! ");
+//                        return null;
+//                    }
                 case 1:
-                    System.out.println("Digite seu nome: ");
+                    System.out.println("Digite seu usuário: ");
+                    String Usuario = scanner.nextLine();
                     scanner.nextLine();
-                    String nome = scanner.nextLine();
                     System.out.println("Digite sua senha: ");
-                    String senha = scanner.next();
-                    System.out.println("Digite o seu papel: ");
-                    String papel = scanner.next();
-                    User user = userService.create(nome, senha, papel);
+                    String pass = scanner.nextLine();
+                    System.out.println("User/ADM: ");
+                    String role2 = scanner.nextLine();
+                    User user1 = userService.validarLogin(Usuario, pass, role2);
                     if (user != null) {
+                        System.out.println("Login efetuado com sucesso! ");
                         return user;
                     } else {
                         System.out.println("Login inválido! ");

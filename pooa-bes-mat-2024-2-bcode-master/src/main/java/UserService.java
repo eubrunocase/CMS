@@ -60,11 +60,11 @@ public class UserService implements PersistenciaUsuario{
         return null;
     }
 
-    public User validarLogin(int id,String username, String password, String role) {
+    public User validarLogin(String username, String password, String role) {
         User usuario = null;
         if(username != null && !username.isEmpty()
                 && username.equals(password)){
-            usuario =  new User(id, username,password, role);
+            usuario =  new User(NextId++, username,password, role);
         }
         return usuario;
     }
