@@ -1,25 +1,29 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class TUI {
 
     Scanner scanner = new Scanner(System.in);
-    Authentication auth = new Authentication();
     ContentService contentService = new ContentService();
     UserService userService = new UserService();
+
+
+     public void primeiroCadastro() {
+         System.out.println("Bem vindo ao SmartCMS! ");
+         System.out.println("Digite seu nome: ");
+         String Nome = scanner.nextLine();
+         System.out.println("Digite sua senha: ");
+         String Senha = scanner.nextLine();
+         System.out.println("User/ADM: ");
+         String role = scanner.nextLine();
+         User user = userService.create(Nome, Senha, role);
+
+     }
 
 
     public User mostrarMenuLogin() {
 
         while (true) {
-            System.out.println("Bem ao CMS! ");
-            System.out.println("Digite seu nome: ");
-            String Nome = scanner.nextLine();
-            System.out.println("Digite sua senha: ");
-            String Senha = scanner.nextLine();
-            System.out.println("User/ADM: ");
-            String role = scanner.nextLine();
-            User user = userService.create(Nome, Senha, role);
-
 
             System.out.println("Menu inicial: ");
             System.out.println("1. Login ");
@@ -29,51 +33,39 @@ public class TUI {
             int escolha = scanner.nextInt();
 
             switch (escolha) {
-//                case 1:
-//                    System.out.println("Digite seu nome: ");
-//                    scanner.nextLine();
-//                    String nome = scanner.nextLine();
-//                    System.out.println("Digite sua senha: ");
-//                    String senha = scanner.next();
-//                    System.out.println("Digite o seu papel: ");
-//                    String papel = scanner.next();
-//                    User user = userService.create(nome, senha, papel);
-//                    if (user != null) {
-//                        return user;
-//                    } else {
-//                        System.out.println("Login inválido! ");
-//                        return null;
-//                    }
-                case 1:
-                    System.out.println("Digite seu usuário: ");
-                    String Usuario = scanner.nextLine();
-                    scanner.nextLine();
+
+                case 1: 
+                    System.out.println("Digite seu nome: ");
+                    String nome = scanner.next();
                     System.out.println("Digite sua senha: ");
-                    String pass = scanner.nextLine();
+                    String senha = scanner.next();
                     System.out.println("User/ADM: ");
-                    String role2 = scanner.nextLine();
-                    User user1 = userService.validarLogin(Usuario, pass, role2);
-                    if (user != null) {        // !!!
-                        System.out.println("Login efetuado com sucesso! ");
-                        return user;
+                    String papel = scanner.next();
+                    Boolean login = userService.validarLogin(nome, senha, papel);
+                    if (login.equals(true)) {
+                        System.out.println("Login efetuado com sucesso!");
+                        mostrarMenuConteudo();
                     } else {
-                        System.out.println("Login invalido! ");
-                        return null;
+                        System.out.println("Login invalido ");
+                        mostrarMenuLogin();
                     }
+
                 case 2:
                     contentService.list();
                     break;
+
                 case 3:
                     System.out.println("Saindo... ");
                     scanner.close();
                     System.exit(0);
+
                 default:
                     System.out.println("Opção inválida! ");
             }
         }
     }
 
-           public User mostrarMenuConteudo (User currentUser) {
+           public User mostrarMenuConteudo () {
                System.out.println("\nMenu:");
                System.out.println("1. Criar usuário ");
                System.out.println("2. Criar Conteúdo");
@@ -109,10 +101,10 @@ public class TUI {
                        break;
                    case 3:
                        contentService.list();
-                       break;
+                       mostrarMenuConteudo();
                    case 4:
                        userService.list();
-                       break;
+                       mostrarMenuConteudo();
 
                        case 5:
                            System.out.println("ID do usuario: ");
@@ -125,12 +117,12 @@ public class TUI {
                            System.out.println("Novo papel: ");
                            String NewPapel = scanner.nextLine();
                            userService.update(id, NewUsername, NewPassword, NewPapel);
-                           break;
+                           mostrarMenuConteudo();
                    case 6:
                        System.out.println("ID do usuario a ser excluido: ");
                        int DeleteId = scanner.nextInt();
                        userService.delete(DeleteId);
-                       break;
+                       mostrarMenuConteudo();
                    case 7:
                        System.out.println("ID do usuario: ");
                        scanner.nextLine();
@@ -140,7 +132,7 @@ public class TUI {
                        String NewPassword2 = scanner.nextLine();
                        userService.alterarSenha(deleteSenha,NewPassword2);
                        System.out.println("Senha alterada com sucesso! ");
-                       break;
+                       mostrarMenuConteudo();
                    case 8:
                        System.out.print("ID do Conteúdo a Atualizar: ");
                        int updateId = scanner.nextInt();
@@ -150,24 +142,23 @@ public class TUI {
                        System.out.print("Novo Corpo: ");
                        String newBody = scanner.nextLine();
                        contentService.update(updateId, newTitle, newBody);
-                       break;
+                       mostrarMenuConteudo();
                    case 9:
                        System.out.print("ID do Conteúdo a Excluir: ");
                        int deleteId = scanner.nextInt();
                        contentService.delete(deleteId);
-                       break;
+                       mostrarMenuConteudo();
                    case 10:
-                       auth.logout();
                        System.out.println("Desconectado com sucesso!");
                        break;
                    default:
                        System.out.println("Opção inválida. Tente novamente.");
-                       break;
+                       mostrarMenuConteudo();
                }
                if (userChoice == 10) {
-                   System.exit(0);
+                   mostrarMenuLogin();
            }
-               return currentUser;
+               return null;
 
            }
 

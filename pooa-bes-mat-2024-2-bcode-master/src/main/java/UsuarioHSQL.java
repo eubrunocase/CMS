@@ -41,17 +41,17 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
 
     @Override
     public void save(User entidade) {
-      String sql = "INSERT INTO USUARIO (username, body) VALUES (?, ?)";
-     try {
-         Connection con = getConnection();
-         PreparedStatement stmt = con.prepareStatement(sql);
-         stmt.setString(1, entidade.getUsername());
-         stmt.setString(2, entidade.getPassword());
-         stmt.executeUpdate();
-     }
-     catch (SQLException e) {
-         e.printStackTrace();
-     }
+        String sql = "INSERT INTO USUARIO (username, body) VALUES (?, ?)";
+        try {
+            Connection con = getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, entidade.getUsername());
+            stmt.setString(2, entidade.getPassword());
+            stmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -59,11 +59,11 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
         String sql = "UPDATE USUARIO SET username = ?, body = ? WHERE id = ?";
 
         try {
-           Connection con = getConnection();
-           PreparedStatement stmt = con.prepareStatement(sql);
-           stmt.setString(1, entidade.getUsername());
-           stmt.setString(1, entidade.getPassword());
-           stmt.executeUpdate();
+            Connection con = getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, entidade.getUsername());
+            stmt.setString(1, entidade.getPassword());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,32 +71,32 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
 
     @Override
     public void list() {
-      List<User> lista = new ArrayList<User>();
-      String sql = "SELECT * FROM USUARIO";
+        List<User> lista = new ArrayList<User>();
+        String sql = "SELECT * FROM USUARIO";
 
-      try {
-          Connection con = getConnection();
-          PreparedStatement stmt = con.prepareStatement(sql);
-         ResultSet rs = stmt.executeQuery();
-         while (rs.next()) {
-             User user = new User(1, rs.getString("Username"), rs.getString("Password"), rs.getString("Role"));
-             user.setId(rs.getInt("id"));
-             user.setUsername(rs.getString("Username"));
-             user.setPassword(rs.getString("Password"));
-             user.setRole(rs.getString("Role"));
-             lista.add(user);
-         }
-          } catch (SQLException e) {
-          e.printStackTrace();
-      }
+        try {
+            Connection con = getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                User user = new User(1, rs.getString("Username"), rs.getString("Password"), rs.getString("Role"));
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setRole(rs.getString("Role"));
+                lista.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
     @Override
     public void delete(int id) {
-      String sql = "DELETE FROM USUARIO WHERE id = ?";
-      boolean delete = false;
+        String sql = "DELETE FROM USUARIO WHERE id = ?";
+        boolean delete = false;
 
         try {
             Connection conn = getConnection();

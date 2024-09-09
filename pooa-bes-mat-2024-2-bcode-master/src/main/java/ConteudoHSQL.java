@@ -7,7 +7,6 @@ public class ConteudoHSQL implements PersistenciaDB<Content>{
 
     private static final String DB_URL = "jdbc:hsqldb:file:;ifexists=true";
 
-
     private static final String TITLE = "sa";
     private static final String BODY = "";
     private Connection connection = null;

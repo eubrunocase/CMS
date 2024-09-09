@@ -1,3 +1,4 @@
+
 public interface PersistenciaConteudo {
 
 
@@ -5,4 +6,5 @@ public interface PersistenciaConteudo {
     public void list();
     void update(int id, String newTitle, String newBody);
     void delete(int id);
+
 }

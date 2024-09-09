@@ -10,11 +10,12 @@ public class UserService implements PersistenciaUsuario{
         users = new ArrayList<User>();
     }
 
+
     @Override
     public User create(String username, String password, String role) {
         User user = new User(NextId++, username, password, role);
         users.add(user);
-        System.out.println("User " + username + " criado com sucesso! ");
+        System.out.println("Usuário " + username + " criado com sucesso! ");
         return user;
     }
 
@@ -60,13 +61,14 @@ public class UserService implements PersistenciaUsuario{
         return null;
     }
 
-    public User validarLogin(String username, String password, String role) {
-        User usuario = null;
-        if(username != null && !username.isEmpty()
-                && username.equals(password)){
-            usuario =  new User(NextId++, username,password, role);
+
+    public Boolean validarLogin(String username, String password, String role) {
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password) && user.getRole().equals(role)) {
+                return true;
+            }
         }
-        return usuario;
+        return false;
     }
 
     public void alterarSenha (int id, String novaSenha) {

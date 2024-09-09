@@ -1,9 +1,9 @@
-import java.util.List;
 
-public interface Persistencia<T> {
+public interface Persistencia {
 
-    void create(T entidade);
-    void update(T entidade);
-    List<T> list();
-    void remover(int id);
+    void create();
+    void list();
+    void update();
+    void delete();
+
 }

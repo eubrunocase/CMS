@@ -44,6 +44,8 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
     public String toString() {
         return "Usuario [id= " + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
     }
