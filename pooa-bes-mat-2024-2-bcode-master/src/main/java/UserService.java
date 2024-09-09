@@ -10,7 +10,6 @@ public class UserService implements PersistenciaUsuario{
         users = new ArrayList<User>();
     }
 
-
     @Override
     public User create(String username, String password, String role) {
         User user = new User(NextId++, username, password, role);
@@ -51,7 +50,6 @@ public class UserService implements PersistenciaUsuario{
         System.out.println("Usuário não encontrado");
     }
 
-
     private User findUser(int id) {
         for (User user : users) {
             if (user.getId() == id) {
@@ -61,10 +59,9 @@ public class UserService implements PersistenciaUsuario{
         return null;
     }
 
-
     public Boolean validarLogin(String username, String password, String role) {
         for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password) && user.getRole().equals(role)) {
+            if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password) && user.getRole().equalsIgnoreCase(role)) {
                 return true;
             }
         }
@@ -81,3 +78,7 @@ public class UserService implements PersistenciaUsuario{
     }
 
 }
+
+
+
+

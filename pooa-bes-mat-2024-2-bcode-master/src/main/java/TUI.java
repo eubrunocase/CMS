@@ -20,11 +20,9 @@ public class TUI {
 
      }
 
-
     public User mostrarMenuLogin() {
 
         while (true) {
-
             System.out.println("Menu inicial: ");
             System.out.println("1. Login ");
             System.out.println("2. Listar conteúdos ");
@@ -34,7 +32,7 @@ public class TUI {
 
             switch (escolha) {
 
-                case 1: 
+                case 1:
                     System.out.println("Digite seu nome: ");
                     String nome = scanner.next();
                     System.out.println("Digite sua senha: ");
@@ -46,7 +44,7 @@ public class TUI {
                         System.out.println("Login efetuado com sucesso!");
                         mostrarMenuConteudo();
                     } else {
-                        System.out.println("Login invalido ");
+                        System.out.println("Usuário e/ou senha incorretos, tente novamente! ");
                         mostrarMenuLogin();
                     }
 
@@ -90,7 +88,7 @@ public class TUI {
                        System.out.println("Role: ");
                        String role = scanner.nextLine();
                        userService.create(Username, Password, role);
-                       break;
+                       mostrarMenuConteudo();
                    case 2:
                        System.out.print("Título do Conteúdo: ");
                        scanner.nextLine();  // Consumir a nova linha
@@ -98,7 +96,7 @@ public class TUI {
                        System.out.print("Corpo do Conteúdo: ");
                        String body = scanner.nextLine();
                        contentService.create(title, body);
-                       break;
+                       mostrarMenuConteudo();
                    case 3:
                        contentService.list();
                        mostrarMenuConteudo();
