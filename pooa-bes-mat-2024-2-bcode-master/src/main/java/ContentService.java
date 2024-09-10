@@ -4,12 +4,13 @@ import java.util.List;
  /*
  *   author: @Bruno Cazé
  *
- *  Classe que contém os métodos responsáveis para o gerenciamento de conteúdo
+ *  Classe Classe responsável por possuir as propriedades do CRUD da entidade Conteúdo;
  */
 public class ContentService implements PersistenciaConteudo {
     /*
      *
      * Collection para armazenar os conteúdos + Id para atualizações posteriores
+     * Atributo "nextId" para iteração e identificação de cada conteúdo individualmente
      */
     private List<Content> contents;
     private int nextId;

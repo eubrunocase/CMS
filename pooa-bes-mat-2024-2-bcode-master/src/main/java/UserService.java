@@ -1,15 +1,35 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+*  Author: @Bruno Cazé and @Zaira Dutra
+*
+*  Classe responsável por possuir as propriedades do CRUD da entidade Usuário;
+*
+ */
+
 public class UserService implements PersistenciaUsuario{
 
+  /*
+  * Colletion "users" para armazenar usuários.
+  * Atributo NextId para iteração e identificação de cada usuário individualmente
+   */
     private List<User> users;
-    private int NextId;
+    private int NextId = 1;
 
+    /*
+    * Construtor da classe que incializa a collection como um ArrayList do tipo "User".
+    * Inicializa o NextId
+     */
     public UserService() {
         users = new ArrayList<User>();
     }
 
+    /*
+    * Metodo "create" responsável por criar novos usuários.
+    * Quando chamado, o metodo cria um novo objeto "user" passando as entradas recebidas
+    * no momento da chamada, em seguida o adiciona no Array de "users" e retorna o user adicionado
+     */
     @Override
     public User create(String username, String password, String role) {
         User user = new User(NextId++, username, password, role);
@@ -17,7 +37,13 @@ public class UserService implements PersistenciaUsuario{
         System.out.println("Usuário " + username + " criado com sucesso! ");
         return user;
     }
-
+    /*
+    * Metodo responsável pela listagem dos usuários.
+    * Quando chamado, verifica se o Array de users está vazio e caso sim, exibe a mensagem de aviso.
+    * Caso tenho usuários cadastrados, utiliza um loop For-Each para percorrer o array e exibir os usuários
+    * com o chamado do toString presente na classe User.
+    *
+     */
     @Override
     public void list() {
      if (users.isEmpty()) {

@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,48 +23,58 @@ public class TUI {
 
     public User mostrarMenuLogin() {
 
-        while (true) {
-            System.out.println("Menu inicial: ");
-            System.out.println("1. Login ");
-            System.out.println("2. Listar conteúdos ");
-            System.out.println("3. Sair ");
-            System.out.println("Escolha uma opção: ");
-            int escolha = scanner.nextInt();
+        try {
+            while (true) {
 
-            switch (escolha) {
+                System.out.println("Menu inicial: ");
+                System.out.println("1. Login ");
+                System.out.println("2. Listar conteúdos ");
+                System.out.println("3. Sair ");
+                System.out.println("Escolha uma opção: ");
+                int escolha = scanner.nextInt();
 
-                case 1:
-                    System.out.println("Digite seu nome: ");
-                    String nome = scanner.next();
-                    System.out.println("Digite sua senha: ");
-                    String senha = scanner.next();
-                    System.out.println("User/ADM: ");
-                    String papel = scanner.next();
-                    Boolean login = userService.validarLogin(nome, senha, papel);
-                    if (login.equals(true)) {
-                        System.out.println("Login efetuado com sucesso!");
-                        mostrarMenuConteudo();
-                    } else {
-                        System.out.println("Usuário e/ou senha incorretos, tente novamente! ");
-                        mostrarMenuLogin();
-                    }
+                switch (escolha) {
 
-                case 2:
-                    contentService.list();
-                    break;
+                    case 1:
+                        System.out.println("Digite seu nome: ");
+                        String nome = scanner.next();
+                        System.out.println("Digite sua senha: ");
+                        String senha = scanner.next();
+                        System.out.println("User/ADM: ");
+                        String papel = scanner.next();
+                        Boolean login = userService.validarLogin(nome, senha, papel);
+                        if (login.equals(true)) {
+                            System.out.println("Login efetuado com sucesso! ");
+                            mostrarMenuConteudo();
+                        } else {
+                            System.out.println("Usuário e/ou senha incorretos, tente novamente! ");
+                            mostrarMenuLogin();
+                        }
 
-                case 3:
-                    System.out.println("Saindo... ");
-                    scanner.close();
-                    System.exit(0);
+                    case 2:
+                        contentService.list();
+                        break;
 
-                default:
-                    System.out.println("Opção inválida! ");
+                    case 3:
+                        System.out.println("Saindo... ");
+                        scanner.close();
+                        System.exit(0);
+
+                    default:
+                        System.out.println("Opção inválida! ");
+                }
             }
+        } catch (InputMismatchException e) {
+            System.out.println("Digite uma entrada válida! ");
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Erro! ");
         }
+    return mostrarMenuLogin();
     }
 
-           public User mostrarMenuConteudo () {
+           public User mostrarMenuConteudo() {
+        try {
                System.out.println("\nMenu:");
                System.out.println("1. Criar usuário ");
                System.out.println("2. Criar Conteúdo");
@@ -158,6 +169,13 @@ public class TUI {
            }
                return null;
 
+           } catch (InputMismatchException e) {
+            System.out.println("Digite uma entrada válida! ");
+            scanner.nextLine();
+              } catch (Exception e) {
+            System.out.println("Erro! ");
+
+        } return mostrarMenuConteudo();
            }
 
 }
