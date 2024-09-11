@@ -10,7 +10,13 @@ public class TUI {
 
 
      public void primeiroCadastro() {
-         System.out.println("Bem vindo ao SmartCMS! ");
+         System.out.println("BEM VINDO AO ");
+         System.out.println(" SSSSS   M     M     AAAAA   RRRRR   TTTTTT     CCCCC   M     M   SSSSS\n" +
+                 "S        MM   MM    A     A  R    R     T     C       MM   MM  S\n" +
+                 " SSS     M M M M    AAAAAAA  RRRRR      T    C        M M M M   SSS\n" +
+                 "     S   M  M  M    A     A  R   R      T     C       M  M  M       S\n" +
+                 "SSSSS    M     M    A     A  R    R     T      CCCCC  M     M  SSSSS\n");
+         System.out.println("Vamos cadastrar o seu usuário! ");
          System.out.println("Digite seu nome: ");
          String Nome = scanner.nextLine();
          System.out.println("Digite sua senha: ");
@@ -18,11 +24,9 @@ public class TUI {
          System.out.println("User/ADM: ");
          String role = scanner.nextLine();
          User user = userService.create(Nome, Senha, role);
-
      }
 
     public User mostrarMenuLogin() {
-
         try {
             while (true) {
 
@@ -194,10 +198,10 @@ public class TUI {
 
              switch (opcao) {
                  case 1:
-                     System.out.print(" Título do Conteúdo: ");
+                     System.out.print("Título do Conteúdo: ");
                      scanner.next();
                      String title = scanner.nextLine();
-                     System.out.print(" Corpo do Conteúdo: ");
+                     System.out.print("Corpo do Conteúdo: ");
                      String body = scanner.nextLine();
                      contentService.create(title, body);
                      mostrarMenuUSER();
@@ -205,32 +209,31 @@ public class TUI {
                      contentService.list();
                      mostrarMenuUSER();
                  case 3:
-                     System.out.println(" ID do usuario: ");
+                     System.out.println("ID do usuario: ");
                      int id = scanner.nextInt();
                      scanner.next();
-                     System.out.println(" Nova senha: ");
+                     System.out.println("Nova senha: ");
                      String NewPassword = scanner.nextLine();
                      userService.alterarSenha(id, NewPassword);
-                     System.out.println(" Senha alterada com sucesso! ");
+                     System.out.println("Senha alterada com sucesso! ");
                      mostrarMenuUSER();
                  case 4:
-                     System.out.println(" Id do conteúdo: ");
+                     System.out.println("Id do conteúdo: ");
                      int updateId = scanner.nextInt();
-                     System.out.println(" Novo título: ");
+                     System.out.println("Novo título: ");
                      String newTitle = scanner.nextLine();
-                     System.out.print(" Novo Corpo: ");
+                     scanner.nextLine();
+                     System.out.print("Novo Corpo: ");
                      String newBody = scanner.nextLine();
                      contentService.update(updateId, newTitle, newBody);
-                     System.out.println(" Conteúdo alterado com sucesso! ");
                      mostrarMenuUSER();
                  case 5:
-                     System.out.println(" Id do conteúdo: ");
+                     System.out.println("Id do conteúdo: ");
                      int deleteId = scanner.nextInt();
                      contentService.delete(deleteId);
-                     System.out.println(" Conteúdo removido com sucesso! ");
                      mostrarMenuUSER();
                  case 6:
-                     System.out.println(" Desconectado com sucesso! ");
+                     System.out.println("Desconectado com sucesso! ");
                      mostrarMenuLogin();
              }
          } catch (InputMismatchException e) {
