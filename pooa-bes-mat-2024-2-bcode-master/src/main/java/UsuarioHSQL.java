@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class UsuarioHSQL implements PersistenciaDB<User>{
 
-    private static final String DB_URL = "jdbc:hsqldb:file:;ifexists=true";
+    private static final String DB_URL = "jdbc:hsqldb:file:database/conteudoDB";
 
     private static final String USERNAME = "sa";
     private static final String PASSWORD = "";
@@ -28,6 +28,7 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
                 "id INTEGER IDENTITY PRIMARY KEY, " +
                 "username VARCHAR(255), " +
                 "body VARCHAR(255))";
+        System.out.println("TABELA " + sql + " CRIADA COM SUCESSO!");
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);

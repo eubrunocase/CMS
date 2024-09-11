@@ -12,7 +12,7 @@ public class HSQLconnection {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
 
             // Conectar ao banco de dados HSQLDB em memória
-            String url = "jdbc:hsqldb:mem:testdb"; // banco em memória
+            String url = "jdbc:hsqldb:file:database/conteudoDB";
             String user = "SA"; // Usuário padrão
             String password = ""; // Senha padrão (vazia)
             connection = DriverManager.getConnection(url, user, password);

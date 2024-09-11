@@ -5,7 +5,7 @@ import java.util.List;
 public class ConteudoHSQL implements PersistenciaDB<Content>{
 
 
-    private static final String DB_URL = "jdbc:hsqldb:file:;ifexists=true";
+    private static final String DB_URL = "jdbc:hsqldb:file:database/conteudoDB";
 
     private static final String TITLE = "sa";
     private static final String BODY = "";
@@ -28,6 +28,7 @@ public class ConteudoHSQL implements PersistenciaDB<Content>{
                 "id INTEGER IDENTITY PRIMARY KEY, " +
                 "titulo VARCHAR(255), " +
                 "tipo VARCHAR(255))";
+         System.out.println("TABELA " + sql + " CRIADA COM SUCESSO!");
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);

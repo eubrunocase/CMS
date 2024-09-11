@@ -30,7 +30,7 @@ public class ContentService implements PersistenciaConteudo {
  */
      @Override
     public void create(String title, String body) {
-        Content content = new Content(nextId++, title, body);
+            Content content = new Content(nextId++, title, body);
         contents.add(content);
         System.out.println("Conteúdo criado com sucesso!\n");
     }

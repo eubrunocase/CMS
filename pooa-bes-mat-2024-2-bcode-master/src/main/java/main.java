@@ -12,7 +12,7 @@ public class main {
             if (currentUser == null) {
                 currentUser = ui.mostrarMenuLogin();
             } else {
-                currentUser = ui.mostrarMenuConteudo();
+                currentUser = ui.mostrarMenuADM();
             }
         }
     }

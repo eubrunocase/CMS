@@ -34,7 +34,6 @@ public class TUI {
                 int escolha = scanner.nextInt();
 
                 switch (escolha) {
-
                     case 1:
                         System.out.println("Digite seu nome: ");
                         String nome = scanner.next();
@@ -43,11 +42,14 @@ public class TUI {
                         System.out.println("User/ADM: ");
                         String papel = scanner.next();
                         Boolean login = userService.validarLogin(nome, senha, papel);
-                        if (login.equals(true)) {
-                            System.out.println("Login efetuado com sucesso! ");
-                            mostrarMenuConteudo();
+                        if (login.equals(true) && papel.equalsIgnoreCase("adm")) {
+                            System.out.println(" Login ADM efetuado com sucesso! ");
+                            mostrarMenuADM();
+                        } else if (login.equals(true) && papel.equalsIgnoreCase("user")) {
+                            System.out.println(" Login USER efetuado com sucesso! ");
+                            mostrarMenuUSER();
                         } else {
-                            System.out.println("Usuário e/ou senha incorretos, tente novamente! ");
+                            System.out.println("Usuário e/ou senha inválidos! ");
                             mostrarMenuLogin();
                         }
 
@@ -73,7 +75,7 @@ public class TUI {
     return mostrarMenuLogin();
     }
 
-           public User mostrarMenuConteudo() {
+           public User mostrarMenuADM() {
         try {
                System.out.println("\nMenu:");
                System.out.println("1. Criar usuário ");
@@ -99,7 +101,7 @@ public class TUI {
                        System.out.println("Role: ");
                        String role = scanner.nextLine();
                        userService.create(Username, Password, role);
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 2:
                        System.out.print("Título do Conteúdo: ");
                        scanner.nextLine();  // Consumir a nova linha
@@ -107,13 +109,13 @@ public class TUI {
                        System.out.print("Corpo do Conteúdo: ");
                        String body = scanner.nextLine();
                        contentService.create(title, body);
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 3:
                        contentService.list();
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 4:
                        userService.list();
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
 
                        case 5:
                            System.out.println("ID do usuario: ");
@@ -126,12 +128,12 @@ public class TUI {
                            System.out.println("Novo papel: ");
                            String NewPapel = scanner.nextLine();
                            userService.update(id, NewUsername, NewPassword, NewPapel);
-                           mostrarMenuConteudo();
+                           mostrarMenuADM();
                    case 6:
                        System.out.println("ID do usuario a ser excluido: ");
                        int DeleteId = scanner.nextInt();
                        userService.delete(DeleteId);
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 7:
                        System.out.println("ID do usuario: ");
                        scanner.nextLine();
@@ -141,7 +143,7 @@ public class TUI {
                        String NewPassword2 = scanner.nextLine();
                        userService.alterarSenha(deleteSenha,NewPassword2);
                        System.out.println("Senha alterada com sucesso! ");
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 8:
                        System.out.print("ID do Conteúdo a Atualizar: ");
                        int updateId = scanner.nextInt();
@@ -151,18 +153,18 @@ public class TUI {
                        System.out.print("Novo Corpo: ");
                        String newBody = scanner.nextLine();
                        contentService.update(updateId, newTitle, newBody);
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 9:
                        System.out.print("ID do Conteúdo a Excluir: ");
                        int deleteId = scanner.nextInt();
                        contentService.delete(deleteId);
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                    case 10:
                        System.out.println("Desconectado com sucesso!");
                        break;
                    default:
                        System.out.println("Opção inválida. Tente novamente.");
-                       mostrarMenuConteudo();
+                       mostrarMenuADM();
                }
                if (userChoice == 10) {
                    mostrarMenuLogin();
@@ -175,7 +177,70 @@ public class TUI {
               } catch (Exception e) {
             System.out.println("Erro! ");
 
-        } return mostrarMenuConteudo();
+        } return mostrarMenuADM();
            }
+
+        public void mostrarMenuUSER() {
+         try {
+             System.out.println("\nMenu:");
+             System.out.println("1. Criar Conteúdo");
+             System.out.println("2. Listar Conteúdos");
+             System.out.println("3. Alterar senha");
+             System.out.println("4. Alterar conteudo");
+             System.out.println("5. Excluir Conteúdo");
+             System.out.println("6. Logout");
+             System.out.print("Escolha uma opção: ");
+             int opcao = scanner.nextInt();
+
+             switch (opcao) {
+                 case 1:
+                     System.out.print(" Título do Conteúdo: ");
+                     scanner.next();
+                     String title = scanner.nextLine();
+                     System.out.print(" Corpo do Conteúdo: ");
+                     String body = scanner.nextLine();
+                     contentService.create(title, body);
+                     mostrarMenuUSER();
+                 case 2:
+                     contentService.list();
+                     mostrarMenuUSER();
+                 case 3:
+                     System.out.println(" ID do usuario: ");
+                     int id = scanner.nextInt();
+                     scanner.next();
+                     System.out.println(" Nova senha: ");
+                     String NewPassword = scanner.nextLine();
+                     userService.alterarSenha(id, NewPassword);
+                     System.out.println(" Senha alterada com sucesso! ");
+                     mostrarMenuUSER();
+                 case 4:
+                     System.out.println(" Id do conteúdo: ");
+                     int updateId = scanner.nextInt();
+                     System.out.println(" Novo título: ");
+                     String newTitle = scanner.nextLine();
+                     System.out.print(" Novo Corpo: ");
+                     String newBody = scanner.nextLine();
+                     contentService.update(updateId, newTitle, newBody);
+                     System.out.println(" Conteúdo alterado com sucesso! ");
+                     mostrarMenuUSER();
+                 case 5:
+                     System.out.println(" Id do conteúdo: ");
+                     int deleteId = scanner.nextInt();
+                     contentService.delete(deleteId);
+                     System.out.println(" Conteúdo removido com sucesso! ");
+                     mostrarMenuUSER();
+                 case 6:
+                     System.out.println(" Desconectado com sucesso! ");
+                     mostrarMenuLogin();
+             }
+         } catch (InputMismatchException e) {
+             System.out.println("Digite uma entrada válida! ");
+             scanner.nextLine();
+         } catch (Exception e) {
+             System.out.println("Erro! ");
+         }
+        }
+
+
 
 }
