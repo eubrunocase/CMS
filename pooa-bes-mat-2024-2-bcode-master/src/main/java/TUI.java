@@ -11,12 +11,12 @@ public class TUI {
      public void primeiroCadastro() {
 
              System.out.println("BEM VINDO AO ");
-             System.out.println(" SSSSS   M     M     AAAAA   RRRRR   TTTTTT     CCCCC   M     M   SSSSS\n" +
-                     "S        MM   MM    A     A  R    R     T     C       MM   MM  S\n" +
-                     " SSS     M M M M    AAAAAAA  RRRRR      T    C        M M M M   SSS\n" +
-                     "     S   M  M  M    A     A  R   R      T     C       M  M  M       S\n" +
-                     "SSSSS    M     M    A     A  R    R     T      CCCCC  M     M  SSSSS\n");
-             System.out.println("Vamos cadastrar o seu usuário! ");
+         System.out.println("BBBBB   CC  C OOOOO   DDDDD   EEEEE     CCCCC   M     M   SSSSS");
+         System.out.println("B    B  C     O   O   D    D  E         C       MM   MM  S");
+         System.out.println("BBBBB   C     O   O   D    D  EEEEE     C       M M M M   SSS");
+         System.out.println("B    B  C     O   O   D    D  E         C       M  M  M      S");
+         System.out.println("BBBBB   CCCCC OOOOO   DDDDD   EEEEE     CCCCC   M     M  SSSSS");
+         System.out.println("Vamos cadastrar o seu usuário! ");
              System.out.println("Digite seu nome: ");
              String Nome = scanner.nextLine();
              System.out.println("Digite sua senha: ");
