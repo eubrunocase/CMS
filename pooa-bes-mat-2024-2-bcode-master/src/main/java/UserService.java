@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class UserService implements PersistenciaUsuario{
 
-  /*
+    /*
   * A classe atual implementa a interface "PersistenciaUsuario", assinando todos os seus metodos.
   *
   * Colletion "users" para armazenar usuários.
@@ -92,8 +92,17 @@ public class UserService implements PersistenciaUsuario{
       if (user != null) {
           users.remove(user);
           System.out.println("User " + id + " removido com sucesso!");
-      } else
-        System.out.println("Usuário não encontrado");
+        } else {
+          System.out.println("Não existem usuarios cadastrados!");
+      }
+    }
+
+    public boolean verifyUsers () {
+        if (users.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     /*
      * Metodo responsável por pegar os usuários pelo Id.

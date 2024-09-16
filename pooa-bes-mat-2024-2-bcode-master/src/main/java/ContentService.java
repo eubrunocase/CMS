@@ -14,7 +14,6 @@ public class ContentService implements PersistenciaConteudo {
      */
     private List<Content> contents;
     private int nextId;
-
 /*
 * Construtor da classe
 * Define a collection "contents" como um Array List, e inicializa o nextId
@@ -30,16 +29,15 @@ public class ContentService implements PersistenciaConteudo {
  */
      @Override
     public void create(String title, String body) {
-            Content content = new Content(nextId++, title, body);
+         Content content = new Content(nextId++, title, body);
         contents.add(content);
         System.out.println("Conteúdo criado com sucesso!\n");
     }
-
      /*
    * Método listContents responsável por listar os conteúdos adicionados
    *
    *  Funciona através de um If-Else + For each, verificando se existem conteúdos pelo "contents.isEmpty"
-   *   e caso contenha conteúdos, ele percorre atráves da iteração do for each
+   *   e caso sim, ele percorre o array atráves da iteração do for each
     */
      @Override
     public void list() {
@@ -51,7 +49,6 @@ public class ContentService implements PersistenciaConteudo {
             }
         }
     }
-
      /*
     * Método updateContent para atualizar conteúdos já listados
     *
@@ -72,7 +69,6 @@ public class ContentService implements PersistenciaConteudo {
 *
 * Utiliza um loop for each para iterar sobre a collection de contents e buscar o seu Id
  */
-
     private Content findContentById(int id) {
         for (Content content : contents) {
             if (content.getId() == id) {

@@ -8,32 +8,32 @@ public class TUI {
     ContentService contentService = new ContentService();
     UserService userService = new UserService();
 
-
      public void primeiroCadastro() {
-         System.out.println("BEM VINDO AO ");
-         System.out.println(" SSSSS   M     M     AAAAA   RRRRR   TTTTTT     CCCCC   M     M   SSSSS\n" +
-                 "S        MM   MM    A     A  R    R     T     C       MM   MM  S\n" +
-                 " SSS     M M M M    AAAAAAA  RRRRR      T    C        M M M M   SSS\n" +
-                 "     S   M  M  M    A     A  R   R      T     C       M  M  M       S\n" +
-                 "SSSSS    M     M    A     A  R    R     T      CCCCC  M     M  SSSSS\n");
-         System.out.println("Vamos cadastrar o seu usuário! ");
-         System.out.println("Digite seu nome: ");
-         String Nome = scanner.nextLine();
-         System.out.println("Digite sua senha: ");
-         String Senha = scanner.nextLine();
-         System.out.println("User/ADM: ");
-         String role = scanner.nextLine();
-         User user = userService.create(Nome, Senha, role);
+
+             System.out.println("BEM VINDO AO ");
+             System.out.println(" SSSSS   M     M     AAAAA   RRRRR   TTTTTT     CCCCC   M     M   SSSSS\n" +
+                     "S        MM   MM    A     A  R    R     T     C       MM   MM  S\n" +
+                     " SSS     M M M M    AAAAAAA  RRRRR      T    C        M M M M   SSS\n" +
+                     "     S   M  M  M    A     A  R   R      T     C       M  M  M       S\n" +
+                     "SSSSS    M     M    A     A  R    R     T      CCCCC  M     M  SSSSS\n");
+             System.out.println("Vamos cadastrar o seu usuário! ");
+             System.out.println("Digite seu nome: ");
+             String Nome = scanner.nextLine();
+             System.out.println("Digite sua senha: ");
+             String Senha = scanner.nextLine();
+             System.out.println("User/ADM: ");
+             String role = scanner.nextLine();
+             User user = userService.create(Nome, Senha, role);
      }
 
     public User mostrarMenuLogin() {
         try {
             while (true) {
-
                 System.out.println("Menu inicial: ");
                 System.out.println("1. Login ");
-                System.out.println("2. Listar conteúdos ");
-                System.out.println("3. Sair ");
+                System.out.println("2. Criar Usuário ");
+                System.out.println("3. Listar conteúdos ");
+                System.out.println("4. Sair ");
                 System.out.println("Escolha uma opção: ");
                 int escolha = scanner.nextInt();
 
@@ -56,12 +56,19 @@ public class TUI {
                             System.out.println("Usuário e/ou senha inválidos! ");
                             mostrarMenuLogin();
                         }
-
                     case 2:
+                        System.out.println("Digite seu nome: ");
+                        String username = scanner.next();
+                        System.out.println("Digite sua senha: ");
+                        String password = scanner.next();
+                        System.out.println("User/ADM: ");
+                        String role = scanner.next();
+                        User loginV = userService.create(username, password, role);
+                        mostrarMenuLogin();
+                    case 3:
                         contentService.list();
                         break;
-
-                    case 3:
+                    case 4:
                         System.out.println("Saindo... ");
                         scanner.close();
                         System.exit(0);
@@ -108,7 +115,7 @@ public class TUI {
                        mostrarMenuADM();
                    case 2:
                        System.out.print("Título do Conteúdo: ");
-                       scanner.nextLine();  // Consumir a nova linha
+                       scanner.nextLine();  
                        String title = scanner.nextLine();
                        System.out.print("Corpo do Conteúdo: ");
                        String body = scanner.nextLine();
@@ -137,7 +144,12 @@ public class TUI {
                        System.out.println("ID do usuario a ser excluido: ");
                        int DeleteId = scanner.nextInt();
                        userService.delete(DeleteId);
+                       Boolean verificar = userService.verifyUsers();
+                       if (verificar.equals(true)) {
+                           mostrarMenuLogin();
+                       } else {
                        mostrarMenuADM();
+                       }
                    case 7:
                        System.out.println("ID do usuario: ");
                        scanner.nextLine();
@@ -180,8 +192,8 @@ public class TUI {
             scanner.nextLine();
               } catch (Exception e) {
             System.out.println("Erro! ");
-
-        } return mostrarMenuADM();
+        }
+        return mostrarMenuADM();
            }
 
         public void mostrarMenuUSER() {
@@ -243,7 +255,5 @@ public class TUI {
              System.out.println("Erro! ");
          }
         }
-
-
 
 }

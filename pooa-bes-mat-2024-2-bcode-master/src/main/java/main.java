@@ -6,9 +6,9 @@ public class main {
         TUI ui = new TUI();
         User currentUser = null;
 
-       ui.primeiroCadastro();
 
         while (true) {
+         ui.primeiroCadastro();
             if (currentUser == null) {
                 currentUser = ui.mostrarMenuLogin();
             } else {
