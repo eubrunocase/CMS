@@ -10,7 +10,8 @@ Este repositório contem o código desenvolvido durante a disciplina POOA(Progra
 - Autenticação básica de usuário(username/senha)
 - CRUD para as duas entidades
 - Interface de usuário via terminal
-- **execução** Para execução basta compilar e executar o arquivo 'main.java'.
+- **Execução:** 
+- Para execução basta compilar e executar o arquivo 'main.java'.
 
 ### Versão 1.0.1 - Cms ajustado para o Maven
 
