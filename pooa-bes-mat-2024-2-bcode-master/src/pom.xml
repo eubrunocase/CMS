@@ -19,7 +19,6 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.7.3</version>
-
         </dependency>
 
     </dependencies>
@@ -30,11 +29,10 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.4.0</version>
                 <configuration>
-                    <mainClass>Main</mainClass>
+                    <mainClass>src.main.java.main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

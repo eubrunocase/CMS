@@ -27,7 +27,8 @@ public class ConteudoHSQL implements PersistenciaDB<Content>{
         String sql = "CREATE TABLE IF NOT EXISTS Content (" +
                 "id INTEGER IDENTITY PRIMARY KEY, " +
                 "titulo VARCHAR(255), " +
-                "tipo VARCHAR(255))";
+                "tipo VARCHAR(255), + " +
+                "autor VARCHAR(255))";
          System.out.println("TABELA " + sql + " CRIADA COM SUCESSO!");
         try {
             Connection con = getConnection();
@@ -37,12 +38,11 @@ public class ConteudoHSQL implements PersistenciaDB<Content>{
         }  catch (SQLException e) {
             e.printStackTrace();
         }
-
      }
 
      @Override
-      public void save (Content content) {
-         String sql = "INSERT INTO Content (id, titulo, tipo) VALUES (?, ?, ?)";
+      public User save (Content content) {
+         String sql = "INSERT INTO Content (id, titulo, tipo, autor) VALUES (?, ?, ?)";
 
          try {
              Connection con = getConnection();
@@ -53,7 +53,8 @@ public class ConteudoHSQL implements PersistenciaDB<Content>{
          }  catch (SQLException e) {
              e.printStackTrace();
          }
-      }
+         return null;
+     }
 
       @Override
     public void list () {
@@ -65,7 +66,7 @@ public class ConteudoHSQL implements PersistenciaDB<Content>{
              PreparedStatement stmt = con.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery();
              while (rs.next()) {
-                 Content content = new Content(1, rs.getString("titulo"), rs.getString("tipo"));
+                 Content content = new Content(1, rs.getString("titulo"), rs.getString("tipo"), rs.getString("autor"));
                  content.setId(rs.getInt("id"));
                  content.setTitle(rs.getString("Titulo"));
                  content.setBody(rs.getString("Tipo"));

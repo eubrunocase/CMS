@@ -10,11 +10,13 @@ public class Content {
     private int id;
     private String title;
     private String body;
+    private String autor;
 
-    public Content(int id, String title, String body) {
+    public Content(int id, String title, String body, String autor) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.autor = autor;
     }
 
     public int getId() {
@@ -41,10 +43,16 @@ public class Content {
         this.body = body;
     }
 
+    public String getAutor() {
+        return autor;
+    }
 
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 
     @Override
     public String toString() {
-        return "ID: " + id + "\nTítulo: " + title + "\nCorpo: " + body + "\n";
+        return "\nID: " + id + "\nTítulo: " + getTitle() + "\nCorpo: " + getBody() + "\nAutor: " + getAutor() + "\n";
     }
 }

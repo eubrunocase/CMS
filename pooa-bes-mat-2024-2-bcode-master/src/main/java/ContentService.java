@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
  /*
  *   author: @Bruno Cazé
  *
@@ -28,10 +27,10 @@ public class ContentService implements PersistenciaConteudo {
 *  Assinaturas de título + body, seguidos da geração de um Id para que possa ser identificado posteriormente
  */
      @Override
-    public void create(String title, String body) {
-         Content content = new Content(nextId++, title, body);
-        contents.add(content);
-        System.out.println("Conteúdo criado com sucesso!\n");
+    public void create(String title, String body, String autor) {
+         Content content = new Content(nextId++, title, body, autor);
+         contents.add(content);
+         System.out.println("Conteúdo criado com sucesso!\n");
     }
      /*
    * Método listContents responsável por listar os conteúdos adicionados

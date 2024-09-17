@@ -23,12 +23,12 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
         return connection;
     }
 
-    public void criarTabela() {
+    public User criarTabela() {
         String sql = "CREATE TABLE IF NOT EXISTS USUARIO (" +
                 "id INTEGER IDENTITY PRIMARY KEY, " +
                 "username VARCHAR(255), " +
                 "body VARCHAR(255))";
-        System.out.println("TABELA " + sql + " CRIADA COM SUCESSO!");
+      //  System.out.println("TABELA " + sql + " CRIADA COM SUCESSO!");
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -38,10 +38,11 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
             e.printStackTrace();
         }
 
+        return null;
     }
 
     @Override
-    public void save(User entidade) {
+    public User save(User entidade) {
         String sql = "INSERT INTO USUARIO (username, body) VALUES (?, ?)";
         try {
             Connection con = getConnection();
@@ -53,6 +54,7 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
         catch (SQLException e) {
             e.printStackTrace();
         }
+        return entidade;
     }
 
     @Override
@@ -109,4 +111,6 @@ public class UsuarioHSQL implements PersistenciaDB<User>{
             e.printStackTrace();
         }
     }
+
+
 }

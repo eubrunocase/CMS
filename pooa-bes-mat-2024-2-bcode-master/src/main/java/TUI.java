@@ -115,11 +115,13 @@ public class TUI {
                        mostrarMenuADM();
                    case 2:
                        System.out.print("Título do Conteúdo: ");
-                       scanner.nextLine();  
+                       scanner.nextLine();
                        String title = scanner.nextLine();
                        System.out.print("Corpo do Conteúdo: ");
                        String body = scanner.nextLine();
-                       contentService.create(title, body);
+                       System.out.println("Autor: ");
+                       String autor = scanner.nextLine();
+                       contentService.create(title, body, autor);
                        mostrarMenuADM();
                    case 3:
                        contentService.list();
@@ -215,7 +217,9 @@ public class TUI {
                      String title = scanner.nextLine();
                      System.out.print("Corpo do Conteúdo: ");
                      String body = scanner.nextLine();
-                     contentService.create(title, body);
+                     System.out.println("Autor: ");
+                     String autor = scanner.nextLine();
+                     contentService.create(title, body, autor);
                      mostrarMenuUSER();
                  case 2:
                      contentService.list();
